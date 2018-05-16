@@ -7,7 +7,7 @@
     <ul>
       <li>컨트랙트주소 : <span id="contractAddr"></span> </li>
       <li>내 어카운트 주소 : <span id="accountAddr"></span> </li>
-      <li>내 어마운트 잔액 : <span id="accountBalance"></span> </li>
+      <li>내 어카운트 잔액 : <span id="accountBalance"></span> </li>
     </ul>
 
   </body>
@@ -492,6 +492,7 @@
       "type": "function"
    }
 ];
+
 var declaration;
 var myAddr;
 var startingBlock;
@@ -516,25 +517,12 @@ function startApp(){
     if(!e){
       myAddr = r[0];
       document.getElementById('accountAddr').innerHTML = getLink(myAddr);
+      web3.eth.getBalance(myAddr, function(e,r){
+        document.getElementById('accountBalance').innerHTML = web3.fromWei(Number(r), 'ether')+"ETH";
+      });
     } else{
       console.log(err);
     }
-  });
-
-  declaration.blockByCounter(1, function(e, start){
-    startingBlock = start;
-
-    declaration.numComments(function(e1, numComments){
-      document.getElementById('accountBalance').innerHTML = numComments;
-
-      if(numcomments <= maxComments){
-        getComments(startingBlock);
-      } else{
-        declaration.blockByCounter(numComments-maxComments, function(e2, newStartBlock){
-          getComments(newStartBlock);
-        });
-      }
-    });
   });
 }
 
