@@ -8,6 +8,8 @@
       <li>컨트랙트주소 : <span id="contractAddr"></span> </li>
       <li>내 어카운트 주소 : <span id="accountAddr"></span> </li>
       <li>내 어카운트 잔액 : <span id="accountBalance"></span> </li>
+      <li>토큰 주소 : <span id="tokenAddress"></span> </li>
+      <li>토큰 잔액 : <span id="tokenBalance"></span> </li>
     </ul>
 
   </body>
@@ -518,12 +520,21 @@ function startApp(){
       myAddr = r[0];
       document.getElementById('accountAddr').innerHTML = getLink(myAddr);
       web3.eth.getBalance(myAddr, function(e,r){
-        document.getElementById('accountBalance').innerHTML = Number(web3.fromWei(Number(r), 'ether')).toFixed(2)+"ETH";
+        document.getElementById('accountBalance').innerHTML = Number(web3.fromWei(Number(r), 'ether')).toFixed(2)+" ETH";
       });
     } else{
       console.log(err);
     }
   });
+
+  var tokenAddr = '0xb785f1612a0b59d3192453e37c9f639a8ef679a6';
+  document.getElementById('tokenAddress').innerHTML = getLink(tokenAddr);
+
+  web3.eth.getBalance(tokenAddr, function(e, r){
+    document.getElementById('tokenBalance').innerHTML = r;
+  })
+
+
 }
 
 function getLink(addr) {
