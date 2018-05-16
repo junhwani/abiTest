@@ -518,7 +518,7 @@ function startApp(){
       myAddr = r[0];
       document.getElementById('accountAddr').innerHTML = getLink(myAddr);
       web3.eth.getBalance(myAddr, function(e,r){
-        document.getElementById('accountBalance').innerHTML = web3.fromWei(Number(r), 'ether')+"ETH";
+        document.getElementById('accountBalance').innerHTML = Number(web3.fromWei(Number(r), 'ether')).toFixed(2)+"ETH";
       });
     } else{
       console.log(err);
