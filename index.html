@@ -13,7 +13,7 @@
     </ul>
 
   </body>
-
+  <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
   <script type="text/javascript">
     var contractAddress = "0xd6F47022d4A19c5F7FD411804Ea46E627B90100F";
@@ -24,6 +24,33 @@ var declaration;
 var myAddr;
 var startingBlock;
 var explorer = "https://ropsten.etherscan.io";
+
+$(document).ready(function(){
+  $.ajax({
+    type:'GET',
+    dataType:'jsonp',
+    data:JSON.stringify({
+             jsonrpc: "2.0",
+             method: "eth_accounts",
+             params: [],
+             id: 1
+         }),
+    url:'http://localhost:8545',
+    jsonp:'stone'
+    success:function(json){
+      alert(showObj(json));
+    }
+  });
+});
+
+function showObj(obj){
+  var str = "";
+  for(key in obj){
+    str += key+"="+obj[key]+"\n";
+  }
+
+  return str;
+}
 
 window.addEventListener('load', function(){
   if(typeof web3 !== 'undefined'){
@@ -57,10 +84,6 @@ function startApp(){
 
   web3.eth.getBalance(tokenAddr, function(e, r){
     document.getElementById('tokenBalance').innerHTML = r;
-  });
-
-  declaration.getMsgSenderToken(function(e,r){
-    alert(r);
   });
 
 
