@@ -63,7 +63,7 @@ function startApp(){
     document.getElementById('tokenBalance').innerHTML = r;
   });
 
-  var amount = declaration.checkGoalReached.call(function(e,r){
+  declaration.getEth.call(function(e,r){
     console.log(r.toString());
   });
 
