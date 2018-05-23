@@ -63,8 +63,9 @@ function startApp(){
     document.getElementById('tokenBalance').innerHTML = r;
   });
 
-  var amount = declaration.getSoldToken.call();
-  console.log(amount);
+  var amount = declaration.getSoldToken.call(function(e,r){
+    console.log(r);
+  });
 
 }
 
