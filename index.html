@@ -63,8 +63,10 @@ function startApp(){
     document.getElementById('tokenBalance').innerHTML = r;
   });
 
-  var amount = declaration.getSoldToken();
-  console.log(amount);
+  var amount = declaration.getSoldToken.call(function(e,r){
+    console.log(amount);
+  });
+
 }
 
 function getLink(addr) {
