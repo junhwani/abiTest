@@ -25,33 +25,8 @@ var myAddr;
 var startingBlock;
 var explorer = "https://ropsten.etherscan.io";
 
-$(document).ready(function(){
-  $.ajax({
-    type:'GET',
-    dataType:'jsonp',
-    data:JSON.stringify({
-             jsonrpc: "2.0",
-             method: "eth_accounts",
-             params: [],
-             id: 1
-         }),
-    url:'http://localhost:8545',
-    jsonp:'stone'
-    success:function(json){
-      alert(showObj(json));
-    }
-  });
-});
 
 
-function showObj(obj){
-  var str = "";
-  for(key in obj){
-    str += key+"="+obj[key]+"\n";
-  }
-
-  return str;
-}
 
 
 window.addEventListener('load', function(){
@@ -87,8 +62,6 @@ function startApp(){
   web3.eth.getBalance(tokenAddr, function(e, r){
     document.getElementById('tokenBalance').innerHTML = r;
   });
-
-
 }
 
 function getLink(addr) {
@@ -97,6 +70,15 @@ function getLink(addr) {
   } else {
     return '<a target="_blank" href="' + explorer + '/tx/' + addr + '">' + addr +'</a>';
   }
+}
+
+function showObj(obj){
+  var str = "";
+  for(key in obj){
+    str += key+"="+obj[key]+"\n";
+  }
+
+  return str;
 }
 
   </script>
