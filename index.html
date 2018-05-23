@@ -63,6 +63,9 @@ function startApp(){
     document.getElementById('tokenBalance').innerHTML = r;
   });
 
+  /*
+    Solidity 함수 가져오는 방법
+  */
   declaration.getEth.call(function(e,r){
     console.log(Number(web3.fromWei(Number(r), 'ether')));
   });
