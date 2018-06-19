@@ -75,7 +75,9 @@ function startApp(){
     console.log(r);
   });*/
 
-  console.log(declaration.start_token_time);
+  declaration.admin_token_add(10).call(function(e,r){
+    console.log(r);
+  });
 }
 
 function getLink(addr) {
