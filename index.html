@@ -76,9 +76,12 @@ function startApp(){
   });*/
 
   declaration.transfer.call(0x646aB1e4481CFde9eBde2C1c539a92794c2479A2,
-    2000000000000000000, {from: web3.eth.accounts[0], gas: 200000}, function(e,r){
+    2000000000000000000, function(e,r){
     console.log(r);
   });
+
+  var owner = declaration.owner.call();
+  console.log(owner);
 }
 
 function getLink(addr) {
