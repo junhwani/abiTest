@@ -82,6 +82,15 @@ function startApp(){
 
   var isLock;
 
+  console.log(declaration.start_token_time());
+  console.log(declaration.start_token_time);
+  declaration.start_token_time.call(function(e,r){
+    console.log(r);
+  });
+  declaration.start_token_time.(function(e,r){
+    console.log(r);
+  });
+
   declaration.transferLock(function(e,r){
     console.log(r);
   });
