@@ -82,8 +82,10 @@ function startApp(){
 
   var isLock;
 
-  isLock = declaration.transferLock;
-  console.log(isLock);
+  declaration.transferLock.call(function(e,r){
+      console.log(r);
+  });
+
 
 }
 
