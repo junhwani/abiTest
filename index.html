@@ -60,7 +60,7 @@ function startApp(){
   document.getElementById('tokenAddress').innerHTML = getLink(tokenAddr);
 
   web3.eth.getBalance(tokenAddr, function(e, r){
-
+    document.getElementById('tokenBalance').innerHTML = r;
   });
 
   /*
@@ -83,7 +83,7 @@ function startApp(){
   var isLock;
 
   declaration.transferLock(function(e,r){
-      document.getElementById('tokenBalance').innerHTML = r;
+    console.log(r);
   });
 
 
