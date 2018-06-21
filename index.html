@@ -82,7 +82,7 @@ function startApp(){
 
   var isLock;
 
-  declaration.transferLock.call(function(e,r){
+  declaration.transferLock(function(e,r){
       document.getElementById('tokenBalance').innerHTML = r;
   });
 
